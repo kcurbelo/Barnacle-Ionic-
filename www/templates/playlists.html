@@ -2,9 +2,44 @@
   <ion-content>
 	<ion-list>
 	  <ion-item ng-repeat="event in events" href="#/app/events/{{event.id}}">
-	    <p>{{event.name}}
-	    <br></p>
+
+
+
+	    <div class="card">
+		  <div class="item item-text-wrap">
+		    <h2>{{event.name}}</h2>
+		    <p>{{event.phone}}</p>
+	      <p>{{event.address_street}}, {{event.address_city}}, {{event.address_state}} {{event.address_zip}}</p>
+	      <p>Hours: {{event.hours}}</p>
+	      <!-- <p>{{event.latitude}}</p> -->
+	      <!-- <p>{{event.longitude}}</p> -->
+	      <hr />
+
+	      <p>Parking: {{jerry}}</p>
+	      <p>Parking Price: {{event.parking_price}}</p>
+	      <p>Lifegaurds: {{event.lifeguard}}</p>
+	      <p>Restrooms: {{event.restroom}}</p>
+	      <p>Surfing: {{event.surfing}}</p>
+	      <p>Firepit: {{event.firepit}}</p>
+	      <p>Volleyball: {{event.volleyball}}</p>
+	      <p>Animal friendly: {{event.dog}}</p>
+	      <p>Fishing: {{event.fishing}}</p>
+
+		    <hr />
+	      <p>{{event.description}}</p>
+
+		      
+		  </div>
+		</div>
+
+
+
+
+
+
+
 	  </ion-item>
 	</ion-list>
   </ion-content>
 </ion-view>
+
