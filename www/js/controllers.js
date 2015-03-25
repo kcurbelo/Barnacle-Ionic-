@@ -39,7 +39,7 @@ angular.module('starter.controllers', [])
           .then(function(response){
             $scope.events = response.data;
 
-            
+            // Just some test code so I could remember.
             // var testerr = $scope.events.length
             // var testerr = $scope.events[0].name  
             // for (var i = 0; i < $scope.events.length; i++) {
@@ -48,7 +48,7 @@ angular.module('starter.controllers', [])
             // }
 
           });
-
+  //What was generated from the project start
   // $scope.playlists = [
   //   { title: 'Reggae', id: 1 },
   //   { title: 'Chill', id: 2 },
