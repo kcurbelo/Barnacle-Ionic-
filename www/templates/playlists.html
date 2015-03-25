@@ -5,8 +5,8 @@
 
 
 
-	    <div class="card">
-		  <div class="item item-text-wrap">
+	    <div class="card" >
+		  <div class="item item-text-wrap" >
 		    <h2>{{event.name}}</h2>
 		    <p>{{event.phone}}</p>
 	      <p>{{event.address_street}}, {{event.address_city}}, {{event.address_state}} {{event.address_zip}}</p>
@@ -15,22 +15,26 @@
 	      <!-- <p>{{event.longitude}}</p> -->
 	      <hr />
 
-	      <p>Parking: {{jerry}}</p>
+
+
+
+
+	      <p><img src="img/firepit.png" style="width:25px;height:25px" ng-style="{'opacity' : event.parking == true ? 0.1 : 1}"> {{event.parking ? '&#10004;' : '&#10006;'}}</p>
 	      <p>Parking Price: {{event.parking_price}}</p>
-	      <p>Lifegaurds: {{event.lifeguard}}</p>
-	      <p>Restrooms: {{event.restroom}}</p>
-	      <p>Surfing: {{event.surfing}}</p>
-	      <p>Firepit: {{event.firepit}}</p>
-	      <p>Volleyball: {{event.volleyball}}</p>
-	      <p>Animal friendly: {{event.dog}}</p>
-	      <p>Fishing: {{event.fishing}}</p>
+	      <p>Lifegaurds: {{event.lifeguard ? '&#10004;' : '&#10006;'}}</p>
+	      <p>Restrooms: {{event.restroom ? '&#10004;' : '&#10006;'}}</p>
+	      <p>Surfing: {{event.surfing ? '&#10004;' : '&#10006;'}}</p>
+	      <p><img src="img/firepit.png" style="width:30px;height:30px"> {{event.firepit ? "&#10004;" : '&#10006;'}}</p>
+	      <p>Volleyball: {{event.volleyball ? '&#10004;' : '&#10006;'}}</p>
+	      <p>Animal friendly: {{event.dog ? '&#10004;' : '&#10006;'}}</p>
+	      <p>Fishing: {{event.fishing ? '&#10004;' : '&#10006;'}}</p>
 
 		    <hr />
 	      <p>{{event.description}}</p>
-
-		      
 		  </div>
 		</div>
+
+
 
 
 
@@ -42,4 +46,3 @@
 	</ion-list>
   </ion-content>
 </ion-view>
-

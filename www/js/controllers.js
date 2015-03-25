@@ -42,17 +42,11 @@ angular.module('starter.controllers', [])
             
             // var testerr = $scope.events.length
             // var testerr = $scope.events[0].name  
-            for (var i = 0; i < $scope.events.length; i++) {
+            // for (var i = 0; i < $scope.events.length; i++) {
 
-            console.log($scope.events[i].county);
-            // if($scope.events[i].parking == true){
-            //   console.log("You have the parking") 
-            //   $scope.events[i].county = "ads"
+            // console.log($scope.events[i].county);
             // }
 
-            }
-            // $scope.events = response.data;
-            // console.log($scope.events);
           });
 
   // $scope.playlists = [
@@ -65,5 +59,8 @@ angular.module('starter.controllers', [])
   // ];
 })
 
+
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 });
+
+
