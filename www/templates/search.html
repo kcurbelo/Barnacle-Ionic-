@@ -1,5 +1,90 @@
-<ion-view view-title="Search">
+<ion-view view-title="Playlists">
   <ion-content>
-    <h1>Search</h1>
+	<ion-list>
+	  <ion-item ng-repeat="event in events" href="#/app/events/{{event.id}}" ng-show="event.county == 'Los Angeles'">
+
+	    <div class="card" >
+		  <div class="item item-text-wrap" >
+
+		    <h2>{{event.name}}</h2>
+		 	  <i class="icon ion-ios-telephone-outline"> {{event.phone}}</i>
+		 	  <br />
+	      <i class="icon ion-ios-location-outline"> {{event.address_street}}, {{event.address_city}}, {{event.address_state}} {{event.address_zip}}</i>
+	      <br />
+	      <i class="icon ion-ios-clock-outline"> Hours: {{event.hours}}</i>
+	      <p>Parking Price: {{event.parking_price}}</p>
+	      <hr /> 
+
+			  <div class="row">
+				  <div class="col">
+			      <div> 
+			      	<img src="img/parkingtrue.png" style="width:25px;height:25px" ng-show="event.parking == true">
+			      	<img src="img/parking.png" style="width:25px;height:25px" ng-show="event.parking == false" ng-style="{'opacity' : event.parking == false ? 0.1 : 1}">
+			      </div>
+				  </div>
+				  <div class="col">
+			      <div> 
+			      	<img src="img/lifeguardtrue.png" style="width:25px;height:25px" ng-show="event.lifeguard == true">
+			      	<img src="img/lifeguard.png" style="width:25px;height:25px" ng-show="event.lifeguard == false" ng-style="{'opacity' : event.lifeguard == false ? 0.1 : 1}">
+			      </div>
+				  </div>
+
+				  <div class="col">
+			      <div> 
+			      	<img src="img/restroomtrue.png" style="width:25px;height:25px" ng-show="event.restroom == true">
+			      	<img src="img/restroom.png" style="width:25px;height:25px" ng-show="event.restroom == false" ng-style="{'opacity' : event.restroom == false ? 0.1 : 1}">
+			      </div>
+				  </div>
+
+				  <div class="col">
+			      <div> 
+			      	<img src="img/surfingtrue.png" style="width:25px;height:25px" ng-show="event.surfing == true">
+			      	<img src="img/surfing.png" style="width:25px;height:25px" ng-show="event.surfing == false" ng-style="{'opacity' : event.surfing == false ? 0.1 : 1}">
+			      </div>
+				  </div>
+
+				</div>
+
+
+
+				<div class="row">
+
+				  <div class="col">	  	
+			      <div> 
+			      	<img src="img/volleyballtrue.png" style="width:25px;height:25px" ng-show="event.volleyball == true">
+			      	<img src="img/volleyball.png" style="width:25px;height:25px" ng-show="event.volleyball == false" ng-style="{'opacity' : event.volleyball == false ? 0.1 : 1}">
+			      </div>
+				  </div>
+
+				  <div class="col">	
+			      <div> 
+			      	<img src="img/animalstrue.png" style="width:25px;height:25px" ng-show="event.dog == true">
+			      	<img src="img/animals.png" style="width:25px;height:25px" ng-show="event.dog == false" ng-style="{'opacity' : event.dog == false ? 0.1 : 1}">
+			      </div>
+				  </div>
+
+				  <div class="col">
+			      <div> 
+			      	<img src="img/fishingtrue.png" style="width:25px;height:25px" ng-show="event.fishing == true">
+			      	<img src="img/fishing.png" style="width:25px;height:25px" ng-show="event.fishing == false" ng-style="{'opacity' : event.fishing == false ? 0.1 : 1}">
+			      </div>	
+				  </div>
+
+				  <div class="col">
+          	<div> 
+			      	<img src="img/firepittrue.png" style="width:25px;height:25px" ng-show="event.fishing == true">
+			      	<img src="img/firepit.png" style="width:25px;height:25px" ng-show="event.fishing == false" ng-style="{'opacity' : event.fishing == false ? 0.1 : 1}">
+			      </div>		
+				  </div>
+
+				</div>
+				<hr />
+				<p>{{event.description}}</p>
+
+		  </div>
+		</div>
+
+	  </ion-item>
+	</ion-list>
   </ion-content>
 </ion-view>
