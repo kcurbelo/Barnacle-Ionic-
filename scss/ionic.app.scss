@@ -29,7 +29,11 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 
 
-.text-color {
-    color: #012345;
-}
 
+/* Inset, by Dan Eden */
+
+hr.style-six {
+    border: 0;
+    height: 0;
+    border-bottom: 1px solid #93CCEA;
+}

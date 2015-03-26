@@ -1,7 +1,7 @@
-<ion-view view-title="Beaches">
+<ion-view view-title="Ventura">
   <ion-content>
 	<ion-list>
-	  <ion-item ng-repeat="event in events" href="#/app/events/{{event.id}}" class="list">
+	  <ion-item ng-repeat="event in events" href="#/app/events/{{event.id}}" class="list" ng-show="event.county == 'Ventura'">
 
 	    <!--<div class="card" >-->
 		  <div class="item-text-wrap " >
@@ -91,6 +91,4 @@
 
 
 </ion-view>
-
-
 

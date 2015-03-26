@@ -29,24 +29,74 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     templateUrl: "templates/menu.html",
     controller: 'AppCtrl'
   })
+     
 
-  .state('app.search', {
-    url: "/search",
-    views: {
-      'menuContent': {
-        templateUrl: "templates/search.html"
+// San Luis Obispo ========================================================================
+    .state('app.SanLuisObispo', {
+      url: "/SanLuisObispo",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/SanLuisObispo.html",
+          controller: 'PlaylistsCtrl'
+        }
       }
-    }
-  })
+    }) 
 
-  .state('app.browse', {
-    url: "/browse",
-    views: {
-      'menuContent': {
-        templateUrl: "templates/browse.html"
+// Santa Barbara ========================================================================
+    .state('app.SantaBarbara', {
+      url: "/SantaBarbara",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/SantaBarbara.html",
+          controller: 'PlaylistsCtrl'
+        }
       }
-    }
-  })
+    }) 
+
+// Ventura ========================================================================
+    .state('app.Ventura', {
+      url: "/Ventura",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/Ventura.html",
+          controller: 'PlaylistsCtrl'
+        }
+      }
+    })        
+
+// LosAngeles ========================================================================
+    .state('app.LosAngeles', {
+      url: "/LosAngeles",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/LosAngeles.html",
+          controller: 'PlaylistsCtrl'
+        }
+      }
+    })
+
+// Orange County ========================================================================
+    .state('app.OrangeCounty', {
+      url: "/OrangeCounty",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/OrangeCounty.html",
+          controller: 'PlaylistsCtrl'
+        }
+      }
+    })
+
+// San Diego ========================================================================
+    .state('app.SanDiego', {
+      url: "/SanDiego",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/SanDiego.html",
+          controller: 'PlaylistsCtrl'
+        }
+      }
+    })    
+// Home ========================================================================
     .state('app.playlists', {
       url: "/playlists",
       views: {
@@ -55,17 +105,9 @@ angular.module('starter', ['ionic', 'starter.controllers'])
           controller: 'PlaylistsCtrl'
         }
       }
-    })
+    });    
 
-  .state('app.single', {
-    url: "/playlists/:playlistId",
-    views: {
-      'menuContent': {
-        templateUrl: "templates/playlist.html",
-        controller: 'PlaylistCtrl'
-      }
-    }
-  });
+
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/playlists');
 });
