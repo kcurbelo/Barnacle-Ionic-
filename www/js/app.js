@@ -108,15 +108,16 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       }
     })    
 
-// Home ========================================================================
+// Map ========================================================================
     .state('app.map', {
       url: "/map",
       views: {
         'menuContent': {
-          templateUrl: "templates/map.html",
+          templateUrl: "templates/map.html"
+          // controller: 'PlaylistsCtrl'
         }
       }
-    });
+    });  
 
 
 
