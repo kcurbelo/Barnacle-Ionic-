@@ -31,6 +31,17 @@ angular.module('starter', ['ionic', 'starter.controllers'])
   })
      
 
+// Home ========================================================================
+    .state('app.playlists', {
+      url: "/playlists",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/playlists.html",
+          controller: 'PlaylistsCtrl'
+        }
+      }
+    })  
+
 // San Luis Obispo ========================================================================
     .state('app.SanLuisObispo', {
       url: "/SanLuisObispo",
@@ -96,16 +107,17 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         }
       }
     })    
+
 // Home ========================================================================
-    .state('app.playlists', {
-      url: "/playlists",
+    .state('app.map', {
+      url: "/map",
       views: {
         'menuContent': {
-          templateUrl: "templates/playlists.html",
-          controller: 'PlaylistsCtrl'
+          templateUrl: "templates/map.html",
         }
       }
-    });    
+    });
+
 
 
   // if none of the above states are matched, use this as the fallback

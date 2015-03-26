@@ -1,20 +1,27 @@
 <ion-view view-title="Beaches">
   <ion-content>
+<!-- ================ Popup code =============== -->
+<!-- <body class="padding" ng-controller="PopupCtrl">
+    <button class="button button-positive" ng-click="showAlert()">
+      Alert
+    </button>
+  </body> -->
+<!-- =========================================== -->
 	<ion-list>
 	  <ion-item ng-repeat="event in events" href="#/app/events/{{event.id}}" class="list">
 
-	    <!--<div class="card" >-->
+
 		  <div class="item-text-wrap " >
 
+        <!-- ===========Top area on the card ============================================================== -->
 		    <h2>{{event.name}}</h2>
 		 	  <p class="icon ion-ios-telephone-outline"> {{event.phone}}</p>
-		 	  
 	      <p class="icon ion-ios-location-outline"> {{event.address_street}}, {{event.address_city}}, {{event.address_state}} {{event.address_zip}}</p>
-	      
 	      <p class="icon ion-ios-clock-outline"> Hours: {{event.hours}}</p>
 	      <p>Parking Price: {{event.parking_price}}</p>
 	      <hr class="style-six"/>
 
+        <!-- =========== Icon area on the card ============================================================ -->
 			  <div class="row">
 				  <div class="col">
 			      <div>
@@ -79,10 +86,11 @@
 
 				</div>
 				<hr class="style-six" />
+				<!-- =========== Description area on the card ======================================================== -->
 				<p class="text-color">{{event.description}}</p>
-
+      <!-- End of text-wrap area -->
 		  </div>
-		<!--</div>-->
+
 
 	  </ion-item>
 	</ion-list>
