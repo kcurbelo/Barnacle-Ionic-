@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['ionic'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout,$ionicPopup) {
 
@@ -20,41 +20,122 @@ $scope.showPopup = function() {
 
 })
 
+
+
+
+
+
+
+
+
 //  Maps controller ============================================================
 
-// .controller("MapController", function($scope){
+.controller('MapCtrl', function($scope, $ionicLoading, $compile) {
 
 
-  // google.maps.event.addDomListener(window, "load", function(){
-
-  //   var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
-
-  //   var mapOptions = {
-  //       center: myLatlng, 
-  //       zoom: 16, 
-  //       myTypeId: google.maps.MapTypeId.ROADMAP
-  //   };
-
-  //   var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-
-  //   $scope.map = map;
-
-  // })
 
 
-// console.log("sads")
 
-// var map;
-// function initialize() {
-//   var mapOptions = {
-//     zoom: 8,
-//     center: new google.maps.LatLng(-34.397, 150.644)
-//   };
-//   map = new google.maps.Map(document.getElementById('map-canvas'),
-//       mapOptions);
-// }
 
-// google.maps.event.addDomListener(window, 'load', initialize);
+
+
+
+    $scope.init = function() {
+        var myLatlng = new google.maps.LatLng(34.0218628,-118.4804206);
+
+        var locations = [
+          ['Bondi Beach', -33.890542, 151.274856, 4],
+          ['Coogee Beach', -33.923036, 151.259052, 5],
+          ['Cronulla Beach', -34.028249, 151.157507, 3],
+          ['Manly Beach', -33.80010128657071, 151.28747820854187, 2],
+          ['Maroubra Beach', -33.950198, 151.259302, 1]
+          ];
+
+
+        var mapOptions = {
+          center: myLatlng,
+          zoom: 14,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map"),
+            mapOptions);
+
+        //Marker + infowindow + angularjs compiled ng-click
+        var contentString = "<div><a ng-click='clickTest()'>Click me!</a></div>";
+        var compiled = $compile(contentString)($scope);
+
+        var infowindow = new google.maps.InfoWindow({
+          content: compiled[0]
+        });
+
+        // Places a map marker when the page loads
+        // var marker = new google.maps.Marker({
+        //   position: myLatlng,
+        //   map: map,
+        //   title: 'Uluru (Ayers Rock)'
+        // });
+
+        var infowindow = new google.maps.InfoWindow();
+
+        var marker, i;
+
+        for (i = 0; i < locations.length; i++) {  
+          marker = new google.maps.Marker({
+            position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+            map: map
+          });
+
+          google.maps.event.addListener(marker, 'click', (function(marker, i) {
+            return function() {
+              infowindow.setContent(locations[i][0]);
+              infowindow.open(map, marker);
+            }
+          })(marker, i));
+        }
+
+        google.maps.event.addListener(marker, 'click', function() {
+          infowindow.open(map,marker);
+        });
+
+        $scope.map = map;
+    };
+
+    // google.maps.event.addDomListener(window, 'load', initialize);
+
+    $scope.centerOnMe = function() {
+        if(!$scope.map) {
+            return;
+        }
+
+        $scope.loading = $ionicLoading.show({
+          content: 'Getting current location...',
+          showBackdrop: false
+        });
+
+        navigator.geolocation.getCurrentPosition(function(pos) {
+          $scope.map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
+          $scope.loading.hide();
+        }, function(error) {
+          alert('Unable to get location: ' + error.message);
+        });
+    };
+
+    $scope.clickTest = function() {
+        alert('Example of infowindow with ng-click')
+    };
+
+
+
+
+
+})
+
+
+
+
+
+
+
 
 
 
@@ -70,6 +151,11 @@ $scope.showPopup = function() {
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 });
+
+
+
+
+
 
 
 

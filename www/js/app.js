@@ -113,11 +113,11 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       url: "/map",
       views: {
         'menuContent': {
-          templateUrl: "templates/map.html"
-          // controller: 'PlaylistsCtrl'
+          templateUrl: "templates/map.html",
+          controller: 'MapCtrl'
         }
       }
-    });  
+    }); 
 
 
 

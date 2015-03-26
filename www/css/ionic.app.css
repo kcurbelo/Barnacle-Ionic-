@@ -5318,7 +5318,8 @@ a.item-content {
 
 .card {
   padding-top: 1px;
-  padding-bottom: 1px; }
+  padding-bottom: 1px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); }
   .card .item {
     border-left: 0;
     border-right: 0; }
@@ -7606,3 +7607,10 @@ hr.style-six {
   border: 0;
   height: 0;
   border-bottom: 1px solid #93CCEA; }
+
+#map {
+  width: 100%;
+  height: 100%; }
+
+.scroll {
+  height: 100%; }
