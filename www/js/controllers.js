@@ -27,45 +27,68 @@ $scope.showPopup = function() {
   var geocoder;
   var map;
 
+  // Hybrid button ================================================================
+  function CenterControl(controlDiv, map) {
 
+    // Set CSS for the control border
+    var controlUI = document.createElement('div');
+    controlUI.style.backgroundColor = 'rgba(248, 253, 254, 0.5)';
+    // controlUI.style.border = '2px solid #fff';
+    controlUI.style.borderRadius = '3px';
+    // controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+    controlUI.style.cursor = 'pointer';
+    controlUI.style.marginTop = '15px';
+    controlUI.style.marginRight = '10px';    
+    controlUI.style.marginLeft = '10px';
+    controlUI.style.textAlign = 'center';
+    controlUI.title = 'Click to recenter the map';
+    controlDiv.appendChild(controlUI);
+    // Set CSS for the control interior
+    var controlText = document.createElement('div');
+    controlText.style.color = 'rgba(0, 0, 0, 0.5)';
+    controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
+    controlText.style.fontSize = '16px';
+    controlText.style.lineHeight = '38px';
+    controlText.style.paddingLeft = '5px';
+    controlText.style.paddingRight = '5px';
+    controlText.innerHTML = 'Satellite';
+    controlUI.appendChild(controlText);
+    // mapTypeId: google.maps.MapTypeId.SATELLITE      
+    google.maps.event.addDomListener(controlUI, 'click', function() {
+      map.setMapTypeId(google.maps.MapTypeId.HYBRID);
+      console.log("Switched to hybrid")
+    });
+  };
 
-function CenterControl(controlDiv, map) {
-
-  // Set CSS for the control border
-  var controlUI = document.createElement('div');
-  controlUI.style.backgroundColor = '#fff';
-  controlUI.style.border = '2px solid #fff';
-  controlUI.style.borderRadius = '3px';
-  controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
-  controlUI.style.cursor = 'pointer';
-  controlUI.style.marginBottom = '22px';
-  controlUI.style.textAlign = 'center';
-  controlUI.title = 'Click to recenter the map';
-  controlDiv.appendChild(controlUI);
-
-  // Set CSS for the control interior
-  var controlText = document.createElement('div');
-  controlText.style.color = 'rgb(25,25,25)';
-  controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
-  controlText.style.fontSize = '16px';
-  controlText.style.lineHeight = '38px';
-  controlText.style.paddingLeft = '5px';
-  controlText.style.paddingRight = '5px';
-  controlText.innerHTML = 'Center Map';
-  controlUI.appendChild(controlText);
-
-  // Setup the click event listeners: simply set the map to
-  // Chicago
-  google.maps.event.addDomListener(controlUI, 'click', function() {
-    map.setMapTypeId(google.maps.MapTypeId.HYBRID);
-    console.log("CLICKES")
-  });
-
-}
-
-
-
-
+   // Roadmap button ================================================================
+   function CenterControl2(controlDiv2, map) {
+    // Set CSS for the control border
+    var controlUI2 = document.createElement('div');
+    controlUI2.style.backgroundColor = 'rgba(248, 253, 254, 0.5)';
+    // controlUI2.style.border = '2px solid #fff';
+    controlUI2.style.borderRadius = '3px';
+    // controlUI2.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+    controlUI2.style.cursor = 'pointer';
+    controlUI2.style.marginTop = '15px';
+    controlUI2.style.textAlign = 'center';
+    controlUI2.title = 'Click to recenter the map';
+    controlDiv2.appendChild(controlUI2);
+    // Set CSS for the control interior
+    var controlText2 = document.createElement('div');
+    controlText2.style.color = 'rgba(0, 0, 0, 0.5)';
+    controlText2.style.fontFamily = 'Roboto,Arial,sans-serif';
+    controlText2.style.fontSize = '16px';
+    controlText2.style.lineHeight = '38px';
+    controlText2.style.paddingLeft = '5px';
+    controlText2.style.paddingRight = '5px';
+    controlText2.innerHTML = 'Map';
+    controlUI2.appendChild(controlText2);
+    // mapTypeId: google.maps.MapTypeId.SATELLITE      
+    google.maps.event.addDomListener(controlUI2, 'click', function() {
+      map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
+      console.log("Switched to hybrid")
+    });
+  }
 
 
   $scope.init = function() {
@@ -75,28 +98,24 @@ function CenterControl(controlDiv, map) {
         center: myLatlng,
         zoom: 14,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
-        zoomControl: false,
-        mapTypeControl: true, 
-        overviewMapControl: true,
-        streetViewControl: false,
-      };
-
-
-
-
+        disableDefaultUI: true
+        };
 
       var map = new google.maps.Map(document.getElementById("map"),
           mapOptions);
 
 
-
-
+      // Creates hybrid button =========================================================
       var centerControlDiv = document.createElement('div');
       var centerControl = new CenterControl(centerControlDiv, map);
-
       centerControlDiv.index = 1;
-      map.controls[google.maps.ControlPosition.TOP_LEFT].push(centerControlDiv);
+      map.controls[google.maps.ControlPosition.TOP_RIGHT].push(centerControlDiv);
 
+      // Creates roadmap button =========================================================
+      var centerControl2Div = document.createElement('div');
+      var centerControl2 = new CenterControl2(centerControl2Div, map);
+      centerControl2Div.index = 1;
+      map.controls[google.maps.ControlPosition.TOP_RIGHT].push(centerControl2Div);
 
 
       // Geocoder ==============================================================
