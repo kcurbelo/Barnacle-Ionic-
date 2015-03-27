@@ -67,3 +67,50 @@ hr.style-six {
   color: #012345;
 }
 
+
+.buttonz {
+  border-color: #b2b2b2;
+  background-color: #f8f8f8;
+  color: #444;
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  padding: 0 12px;
+  min-width: 52px;
+  min-height: 43px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 2px;
+  vertical-align: top;
+  text-align: center;
+  text-overflow: ellipsis;
+  font-size: 16px;
+  line-height: 42px;
+  cursor: pointer;
+  height: 43px;
+}
+
+
+.itemz {
+  border-color: #FFF;
+  background-color: #F8FDFE;
+  color: #444;
+  position: relative;
+  z-index: 2;
+  display: block;
+  margin: -1px;
+  padding: 16px;
+  border-width: 1px;
+  border-style: solid;
+  font-size: 16px;
+  height: 43px;
+}
+
+
+.buttonz.button-energized {
+  border-color: #FFFFFF;
+  background-color: #FF8800;
+  color: #fff;
+}
+
+

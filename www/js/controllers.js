@@ -20,9 +20,6 @@ $scope.showPopup = function() {
 
 })
 
-
-
-
 //  Maps controller ============================================================
 
 .controller('MapCtrl', function($scope, $ionicLoading, $compile, $http) {
@@ -36,10 +33,14 @@ $scope.showPopup = function() {
       var mapOptions = {
         center: myLatlng,
         zoom: 14,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+            /* Disabling default UI widgets */
+        // disableDefaultUI: true // <-- see this line
       };
+
       var map = new google.maps.Map(document.getElementById("map"),
           mapOptions);
+
 
       // Geocoder ==============================================================
       $scope.codeAddress= function() {

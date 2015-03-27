@@ -6,10 +6,18 @@
 		</ion-header-bar>
 		<ion-content>
 
-	    <div id="panel">
+<!-- 	    <div id="panel">
 	      <input id="address" type="textbox" value="Santa Monica, CA">
 	      <input type="button" value="Geocode" ng-click="codeAddress()">
-	    </div>
+	    </div> -->
+
+		<div class="row">
+		  	<input id="address" type="textbox" value="Santa Monica, CA" class="itemz item-input col col-75">
+		  	<input type="button" value="Find" ng-click="codeAddress()" class="buttonz button-energized col">
+
+		</div>
+
+
 		 
 		<div id="map" data-tap-disabled="true"></div>
 		
