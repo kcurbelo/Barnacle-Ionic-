@@ -13,15 +13,20 @@
   </ion-side-menu-content>
 
   <ion-side-menu side="left">
-    <ion-header-bar class="bar-energized">
-      <h1 class="title">Left</h1>
+    <ion-header-bar class="bar-dark">
+      <h1 class="title">Menu</h1>
     </ion-header-bar>
     <ion-content >
       <ion-list >
-        <ion-item nav-clear menu-close href="#/app/playlists" class="dark">
-          All Beaches
-        </ion-item>
-        <br />
+        <div class="item item-divider">
+          Find
+        </div>   
+        <ion-item nav-clear menu-close href="#/app/map" class="dark">
+          Map
+        </ion-item>  
+        <div class="item item-divider-orange">
+          Browse 
+        </div>     
         <ion-item nav-clear menu-close href="#/app/SanLuisObispo" class="dark">
           San Luis Obispo
         </ion-item> 
@@ -40,8 +45,8 @@
         <ion-item nav-clear menu-close href="#/app/SanDiego" class="dark">
           San Diego
         </ion-item>  
-        <ion-item nav-clear menu-close href="#/app/map" class="dark">
-          Map
+         <ion-item nav-clear menu-close href="#/app/playlists" class="dark">
+          Browse all
         </ion-item>                                    
       </ion-list>
 

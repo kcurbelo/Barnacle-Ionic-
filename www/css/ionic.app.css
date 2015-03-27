@@ -7614,3 +7614,22 @@ hr.style-six {
 
 .scroll {
   height: 100%; }
+
+.item-divider {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  min-height: 30px;
+  background-color: #93CCEA;
+  color: white;
+  font-weight: 500; }
+
+.item-divider-orange {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  min-height: 30px;
+  background-color: #FF8800;
+  color: white;
+  font-weight: 500; }
+
+#darkest {
+  color: #012345; }

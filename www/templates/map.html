@@ -1,17 +1,25 @@
 
+<ion-view view-title="Map">
+	<body ng-controller="MapCtrl">
+		<ion-header-bar class="bar-dark" ng-init="init()">
+		    <h1 class="title">Map</h1>
+		</ion-header-bar>
+		<ion-content>
 
-<body ng-controller="MapCtrl">
-<ion-header-bar class="bar-dark" ng-init="init()">
-    <h1 class="title">Map</h1>
-</ion-header-bar>
-<ion-content>
+	    <div id="panel">
+	      <input id="address" type="textbox" value="Santa Monica, CA">
+	      <input type="button" value="Geocode" ng-click="codeAddress()">
+	    </div>
+		 
+		<div id="map" data-tap-disabled="true"></div>
+		
+		</ion-content>
+		<ion-footer-bar class="bar-dark">
+		<!-- Used the ............. to make sure the link spans the full width of the bar -->
+		  <a ng-click="centerOnMe()" class="button button-icon ion-ios-navigate"> Find Me</a><a ng-click="centerOnMe()" class="button button-icon" id="darkest">...................................................</a>
+		</ion-footer-bar>
+	</body>
 
-  <div id="map" data-tap-disabled="true"></div>
-</ion-content>
-<ion-footer-bar class="bar-dark">
-  <a ng-click="centerOnMe()" class="button button-icon icon ion-navigate">Find Me</a>
-</ion-footer-bar>
-  </body>
-
+</ion-view>
 
   
