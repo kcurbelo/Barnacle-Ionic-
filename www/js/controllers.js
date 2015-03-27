@@ -40,15 +40,6 @@ $scope.showPopup = function() {
     $scope.init = function() {
         var myLatlng = new google.maps.LatLng(34.0218628,-118.4804206);
 
-        var locations = [
-          ['Bondi Beach', -33.890542, 151.274856, 4],
-          ['Coogee Beach', -33.923036, 151.259052, 5],
-          ['Cronulla Beach', -34.028249, 151.157507, 3],
-          ['Manly Beach', -33.80010128657071, 151.28747820854187, 2],
-          ['Maroubra Beach', -33.950198, 151.259302, 1]
-          ];
-
-
         var mapOptions = {
           center: myLatlng,
           zoom: 14,
@@ -87,7 +78,8 @@ $scope.showPopup = function() {
         for (i = 0; i < events.length; i++) {  
           marker = new google.maps.Marker({
             position: new google.maps.LatLng(events[i].latitude, events[i].longitude),
-            map: map
+            map: map, 
+            icon: 'img/marker.png'
           });
 
           google.maps.event.addListener(marker, 'click', (function(marker, i) {
