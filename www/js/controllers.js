@@ -23,18 +23,15 @@ $scope.showPopup = function() {
 
 
 
-
-
-
-
-
 //  Maps controller ============================================================
 
-.controller('MapCtrl', function($scope, $ionicLoading, $compile) {
+.controller('MapCtrl', function($scope, $ionicLoading, $compile, $http) {
 
 
 
-
+// for(var i = 0; i < myObject.length; i++) {
+//   console.log(myObject[i].name)
+// }
 
 
 
@@ -60,6 +57,7 @@ $scope.showPopup = function() {
         var map = new google.maps.Map(document.getElementById("map"),
             mapOptions);
 
+
         //Marker + infowindow + angularjs compiled ng-click
         var contentString = "<div><a ng-click='clickTest()'>Click me!</a></div>";
         var compiled = $compile(contentString)($scope);
@@ -77,17 +75,24 @@ $scope.showPopup = function() {
 
         var infowindow = new google.maps.InfoWindow();
 
+
+  $http
+        .get("https://barnacle-api.herokuapp.com", { cache: true })
+          .then(function(response){
+            var events = response.data;
+            console.log(events[0])
+
         var marker, i;
 
-        for (i = 0; i < locations.length; i++) {  
+        for (i = 0; i < events.length; i++) {  
           marker = new google.maps.Marker({
-            position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+            position: new google.maps.LatLng(events[i].latitude, events[i].longitude),
             map: map
           });
 
           google.maps.event.addListener(marker, 'click', (function(marker, i) {
             return function() {
-              infowindow.setContent(locations[i][0]);
+              infowindow.setContent(events[i].name);
               infowindow.open(map, marker);
             }
           })(marker, i));
@@ -98,7 +103,13 @@ $scope.showPopup = function() {
         });
 
         $scope.map = map;
+
+        });
+
     };
+
+
+
 
     // google.maps.event.addDomListener(window, 'load', initialize);
 
@@ -146,6 +157,7 @@ $scope.showPopup = function() {
         .get("https://barnacle-api.herokuapp.com", { cache: true })
           .then(function(response){
             $scope.events = response.data;
+            // console.log($scope.events[0])
           });
 })
 
