@@ -92,99 +92,142 @@ $scope.showPopup = function() {
 
 
   $scope.init = function() {
-      geocoder = new google.maps.Geocoder();
-      var myLatlng = new google.maps.LatLng(34.0218628,-118.4804206);
-      var mapOptions = {
-        center: myLatlng,
-        zoom: 14,
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
-        disableDefaultUI: true
-        };
+    geocoder = new google.maps.Geocoder();
+    var myLatlng = new google.maps.LatLng(34.0218628,-118.4804206);
+    var mapOptions = {
+      center: myLatlng,
+      zoom: 14,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      disableDefaultUI: true
+      };
 
-      var map = new google.maps.Map(document.getElementById("map"),
-          mapOptions);
-
-
-      // Creates hybrid button =========================================================
-      var centerControlDiv = document.createElement('div');
-      var centerControl = new CenterControl(centerControlDiv, map);
-      centerControlDiv.index = 1;
-      map.controls[google.maps.ControlPosition.TOP_RIGHT].push(centerControlDiv);
-
-      // Creates roadmap button =========================================================
-      var centerControl2Div = document.createElement('div');
-      var centerControl2 = new CenterControl2(centerControl2Div, map);
-      centerControl2Div.index = 1;
-      map.controls[google.maps.ControlPosition.TOP_RIGHT].push(centerControl2Div);
+    var map = new google.maps.Map(document.getElementById("map"),
+        mapOptions);
 
 
-      // Geocoder ==============================================================
-      $scope.codeAddress= function() {
-        console.log("asdasd")
-        var address = document.getElementById('address').value;
-        geocoder.geocode( { 'address': address}, function(results, status) {
-          if (status == google.maps.GeocoderStatus.OK) {
-            map.setCenter(results[0].geometry.location);
-            // var marker = new google.maps.Marker({
-            //     map: map,
-            //     position: results[0].geometry.location
-            // });
-          } else {
-            alert('Geocode was not successful for the following reason: ' + status);
-          }
-        });
-      }
+    // Creates hybrid button =========================================================
+    var centerControlDiv = document.createElement('div');
+    var centerControl = new CenterControl(centerControlDiv, map);
+    centerControlDiv.index = 1;
+    map.controls[google.maps.ControlPosition.TOP_RIGHT].push(centerControlDiv);
 
-        // Marker + infowindow + angularjs compiled ng-click ==============================================
-        var contentString = "<div><a ng-click='clickTest()'>Click me!</a></div>";
-        var compiled = $compile(contentString)($scope);
+    // Creates roadmap button =========================================================
+    var centerControl2Div = document.createElement('div');
+    var centerControl2 = new CenterControl2(centerControl2Div, map);
+    centerControl2Div.index = 1;
+    map.controls[google.maps.ControlPosition.TOP_RIGHT].push(centerControl2Div);
 
-        var infowindow = new google.maps.InfoWindow({
-          content: compiled[0]
-        });
-        // Places a map marker when the page loads
-        // var marker = new google.maps.Marker({
-        //   position: myLatlng,
-        //   map: map,
-        //   title: 'Uluru (Ayers Rock)'
-        // });
-        var infowindow = new google.maps.InfoWindow();
 
-        // Get the data for lat, lng ==============================================================
-        $http
-        .get("https://barnacle-api.herokuapp.com", { cache: true })
-          .then(function(response){
+    // Geocoder ==============================================================
+    $scope.codeAddress= function() {
+      var address = document.getElementById('address').value;
+      geocoder.geocode( { 'address': address}, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          map.setCenter(results[0].geometry.location);
+          // var marker = new google.maps.Marker({
+          //     map: map,
+          //     position: results[0].geometry.location
+          // });
+        } else {
+          alert('Geocode was not successful for the following reason: ' + status);
+        }
+      });
+    }
 
-            var events = response.data;
-            console.log(events[0])
-            var marker, i;
+    // Marker + infowindow + angularjs compiled ng-click ==============================================
+    var contentString = "<div><a ng-click='clickTest()'>Click me!</a></div>";
+    var compiled = $compile(contentString)($scope);
 
-            for (i = 0; i < events.length; i++) {  
-              marker = new google.maps.Marker({
-                position: new google.maps.LatLng(events[i].latitude, events[i].longitude),
-                map: map, 
-                icon: 'img/marker.png'
-              });
+    var infowindow = new google.maps.InfoWindow({
+      content: compiled[0]
+    });
+    // Places a map marker when the page loads
+    // var marker = new google.maps.Marker({
+    //   position: myLatlng,
+    //   map: map,
+    //   title: 'Uluru (Ayers Rock)'
+    // });
+    // var infowindow = new google.maps.InfoWindow();
 
-              google.maps.event.addListener(marker, 'click', (function(marker, i) {
-                return function() {
-                  infowindow.setContent(events[i].name);
-                  infowindow.open(map, marker);
-                }
-              })(marker, i));
+    var contentString = '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
+      '<div id="bodyContent">'+
+      '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
+      'sandstone rock formation in the southern part of the '+
+      'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
+      'south west of the nearest large town, Alice Springs; 450&#160;km '+
+      '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
+      'features of the Uluru - Kata Tjuta National Park. Uluru is '+
+      'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
+      'Aboriginal people of the area. It has many springs, waterholes, '+
+      'rock caves and ancient paintings. Uluru is listed as a World '+
+      'Heritage Site.</p>'+
+      '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
+      'https://en.wikipedia.org/w/index.php?title=Uluru</a> '+
+      '(last visited June 22, 2009).</p>'+
+      '</div>'+
+      '</div>';
+;
 
-            }
 
-            google.maps.event.addListener(marker, 'click', function() {
-              infowindow.open(map,marker);
 
-            });
 
-            $scope.map = map;
-         
-          });
+  var infowindow = new google.maps.InfoWindow({
+      content: contentString
+  });
+
+
+
+    // Get the data for lat, lng ==============================================================
+    $http
+    .get("https://barnacle-api.herokuapp.com", { cache: true })
+      .then(function(response){
+
+        var events = response.data;
+        console.log(events[0])
+        var marker, i;
         
-        };
+        for (i = 0; i < events.length; i++) {  
+          marker = new google.maps.Marker({
+            position: new google.maps.LatLng(events[i].latitude, events[i].longitude),
+            map: map, 
+            icon: 'img/marker.png'
+          });
+          
+          google.maps.event.addListener(marker, 'click', (function(marker, i) {
+            return function() {
+              
+              var parking = events[i].parking
+
+              if (events[i].parking == true) {
+                var parkicon = "<img src='img/parkingtrue.png' style='width:25px;height:25px'>"
+              }
+              else
+                var parkicon = "<img src='img/parking.png' style='width:25px;height:25px;opacity: 0.4;'>"
+
+              infowindow.setContent(
+
+              '<h3>'+ events[i].name + '</h3>' + parkicon
+
+
+
+
+
+                );
+              infowindow.open(map, marker);
+            }
+          })(marker, i));
+        }
+
+        google.maps.event.addListener(marker, 'click', function() {
+          infowindow.open(map,marker);
+        });
+        $scope.map = map;
+      });
+    
+    };
 
     // Centering in on the user location ========================================================
     $scope.centerOnMe = function() {
