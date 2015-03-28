@@ -198,18 +198,85 @@ $scope.showPopup = function() {
           
           google.maps.event.addListener(marker, 'click', (function(marker, i) {
             return function() {
-              
+              // Parking icon ==================================== 
               var parking = events[i].parking
-
               if (events[i].parking == true) {
-                var parkicon = "<img src='img/parkingtrue.png' style='width:25px;height:25px'>"
+                var parkingicon = "<img src='img/parkingtrue.png' style='width:25px;height:25px'>"
               }
-              else
-                var parkicon = "<img src='img/parking.png' style='width:25px;height:25px;opacity: 0.4;'>"
+              else {
+                var parkingicon = "<img src='img/parking.png' style='width:25px;height:25px;opacity: 0.4;'>"
+              }
+              // Lifeguard icon ====================================
+              var lifeguard = events[i].lifeguard
+              if (events[i].lifeguard == true) {
+                var lifeguardicon = "<img src='img/lifeguardtrue.png' style='width:25px;height:25px'>"
+              }
+              else {
+                var lifeguardicon = "<img src='img/lifeguard.png' style='width:25px;height:25px;opacity: 0.4;'>"
+              }
+              // Restroom icon ====================================
+              var restroom = events[i].restroom
+              if (events[i].restroom == true) {
+                var restroomicon = "<img src='img/restroomtrue.png' style='width:25px;height:25px'>"
+              }
+              else {
+              var restroomicon = "<img src='img/restroom.png' style='width:25px;height:25px;opacity: 0.4;'>"
+              }
+              // Surfing icon ====================================
+              var surfing = events[i].surfing
+              if (events[i].surfing == true) {
+                var surfingicon = "<img src='img/surfingtrue.png' style='width:25px;height:25px'>"
+              }
+              else {
+              var surfingicon = "<img src='img/surfing.png' style='width:25px;height:25px;opacity: 0.4;'>"
+              }
+              // Volleyball icon ====================================
+              var volleyball = events[i].volleyball
+              if (events[i].volleyball == true) {
+                var volleyballicon = "<img src='img/volleyballtrue.png' style='width:25px;height:25px'>"
+              }
+              else {
+              var volleyballicon = "<img src='img/volleyball.png' style='width:25px;height:25px;opacity: 0.4;'>"
+              }
+              // Animals icon ====================================
+              var animals = events[i].animals
+              if (events[i].dog == true) {
+                var animalsicon = "<img src='img/animalstrue.png' style='width:25px;height:25px'>"
+              }
+              else {
+              var animalsicon = "<img src='img/animals.png' style='width:25px;height:25px;opacity: 0.4;'>"
+              }
+              // Animals icon ====================================
+              var animals = events[i].animals
+              if (events[i].dog == true) {
+                var animalsicon = "<img src='img/animalstrue.png' style='width:25px;height:25px'>"
+              }
+              else {
+              var animalsicon = "<img src='img/animals.png' style='width:25px;height:25px;opacity: 0.4;'>"
+              }
+              // Fishing icon ====================================
+              var fishing = events[i].fishing
+              if (events[i].dog == true) {
+                var fishingicon = "<img src='img/fishingtrue.png' style='width:25px;height:25px'>"
+              }
+              else {
+              var fishingicon = "<img src='img/fishing.png' style='width:25px;height:25px;opacity: 0.4;'>"
+              }
+              // Firepit icon ====================================
+              var firepit = events[i].firepit
+              if (events[i].firepit == true) {
+                var firepiticon = "<img src='img/firepittrue.png' style='width:25px;height:25px'>"
+              }
+              else {
+              var firepiticon = "<img src='img/firepit.png' style='width:25px;height:25px;opacity: 0.4;'>"
+              }
+
+
+
 
               infowindow.setContent(
 
-              '<h3>'+ events[i].name + '</h3>' + parkicon
+              '<h3>'+ events[i].name + '</h3>' + parkingicon + lifeguardicon + restroomicon + surfingicon + volleyballicon + animalsicon + firepiticon
 
 
 
