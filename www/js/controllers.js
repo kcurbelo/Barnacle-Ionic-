@@ -256,7 +256,7 @@ $scope.showPopup = function() {
               }
               // Fishing icon ====================================
               var fishing = events[i].fishing
-              if (events[i].dog == true) {
+              if (events[i].fishing == true) {
                 var fishingicon = "<img src='img/fishingtrue.png' style='width:25px;height:25px'>"
               }
               else {
@@ -275,13 +275,13 @@ $scope.showPopup = function() {
 
 
               infowindow.setContent(
-
-              '<h3>'+ events[i].name + '</h3>' + parkingicon + lifeguardicon + restroomicon + surfingicon + volleyballicon + animalsicon + firepiticon
-
-
-
-
-
+              '<h3>'+ events[i].name + '</h3>' + 
+              '<p>' + events[i].address_street + events[i].address_city +  ', ' +  events[i].address_state + ', ' + events[i].address_zip +
+              '<br />' +
+              '<p>' + 'Hours: '+ events[i].hours + '</p>' +
+              '<p>' + 'Amenities:' + '</p>' +
+              parkingicon + ' ' + lifeguardicon + ' ' + restroomicon + ' ' + surfingicon + ' ' + 
+              volleyballicon + ' ' + animalsicon + ' ' + fishingicon + ' ' + firepiticon 
                 );
               infowindow.open(map, marker);
             }
