@@ -1,22 +1,34 @@
 angular.module('starter.controllers', ['ionic'])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout,$ionicPopup) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $ionicPopover) {
 
 // Popup logic ====================
-$scope.showPopup = function() {
-  $scope.data = {}
- };
- // An alert dialog
- $scope.showAlert = function() {
-   var alertPopup = $ionicPopup.alert({
-     title: 'Don\'t eat that!',
-     template: "popover.html"
-   });
-   console.log("You have tapped the button")
-   alertPopup.then(function(res) {
-     console.log('Thank you for not eating my delicious ice cream cone');
-   });
- };
+  // .fromTemplate() method
+  var template = '<ion-popover-view><ion-header-bar> <h1 class="title">My Popover Title</h1> </ion-header-bar> <ion-content> Hello! </ion-content></ion-popover-view>';
+
+  $scope.popover = $ionicPopover.fromTemplate(template, {
+    scope: $scope
+  });
+
+
+  $scope.openPopover = function($event) {
+    $scope.popover.show($event);
+  };
+  $scope.closePopover = function() {
+    $scope.popover.hide();
+  };
+  //Cleanup the popover when we're done with it!
+  $scope.$on('$destroy', function() {
+    $scope.popover.remove();
+  });
+  // Execute action on hide popover
+  $scope.$on('popover.hidden', function() {
+    // Execute action
+  });
+  // Execute action on remove popover
+  $scope.$on('popover.removed', function() {
+    // Execute action
+  });
 
 })
 
@@ -271,7 +283,7 @@ $scope.showPopup = function() {
               var firepiticon = "<img src='img/firepit.png' style='width:25px;height:25px;opacity: 0.4;'>"
               }
 
-
+              
 
 
               infowindow.setContent(
@@ -279,6 +291,7 @@ $scope.showPopup = function() {
               '<p>' + events[i].address_street + events[i].address_city +  ', ' +  events[i].address_state + ', ' + events[i].address_zip +
               '<br />' +
               '<p>' + 'Hours: '+ events[i].hours + '</p>' +
+              '<hr />' +
               '<p>' + 'Amenities:' + '</p>' +
               parkingicon + ' ' + lifeguardicon + ' ' + restroomicon + ' ' + surfingicon + ' ' + 
               volleyballicon + ' ' + animalsicon + ' ' + fishingicon + ' ' + firepiticon 

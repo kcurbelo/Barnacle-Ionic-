@@ -1,11 +1,12 @@
 <ion-view view-title="Beaches">
   <ion-content>
 <!-- ================ Popup code =============== -->
-<!-- <body class="padding" ng-controller="PopupCtrl">
-    <button class="button button-positive" ng-click="showAlert()">
-      Alert
-    </button>
-  </body> -->
+
+<p>
+  <button ng-click="openPopover($event)">Open Popover</button>
+</p>
+
+
 <!-- =========================================== -->
 	<ion-list>
 	  <ion-item ng-repeat="event in events" href="#/app/events/{{event.id}}" class="list">

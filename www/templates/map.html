@@ -24,7 +24,11 @@
 		</ion-content>
 		<ion-footer-bar class="bar-dark">
 		<!-- Used the ............. to make sure the link spans the full width of the bar -->
-		  <a ng-click="centerOnMe()" class="button button-icon ion-ios-navigate"> Find Me</a><a ng-click="centerOnMe()" class="button button-icon" id="darkest">...................................................</a>
+		  <a ng-click="centerOnMe()" class="button button-icon ion-ios-navigate"> Find Me</a>
+		  <a ng-click="centerOnMe()" class="button button-icon" id="darkest">-------------------</a>
+		  <a ng-click="openPopover($event)" class="button button-icon ion-ios-help"></a>
+
+
 		</ion-footer-bar>
 	</body>
 
