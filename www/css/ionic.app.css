@@ -7608,6 +7608,11 @@ hr.style-six {
   height: 0;
   border-bottom: 1px solid #93CCEA; }
 
+hr.style-grey {
+  border: 0;
+  height: 0;
+  border-bottom: 1px solid #D1D0CE; }
+
 #map {
   width: 100%;
   height: 100%; }
@@ -7674,6 +7679,10 @@ hr.style-six {
   background-color: #FF8800;
   color: #fff; }
 
+.grey-text {
+  color: #625D5D;
+  background-color: white; }
+
 .helper {
   display: inline-block;
   height: 100%;
@@ -7683,3 +7692,18 @@ hr.style-six {
   vertical-align: middle;
   max-height: 25px;
   max-width: 25px; }
+
+.popover {
+  height: 400px;
+  width: 260px;
+  background-color: white; }
+
+.popover-text {
+  margin-left: 10px;
+  color: #625D5D; }
+
+.bg-color {
+  background-color: #F8FDFE; }
+
+.text-white {
+  color: #012345; }

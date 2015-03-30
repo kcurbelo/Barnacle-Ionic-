@@ -106,7 +106,18 @@ angular.module('starter', ['ionic', 'starter.controllers'])
           controller: 'PlaylistsCtrl'
         }
       }
-    })    
+    }) 
+
+// Suggesstion form ========================================================================
+    .state('app.SuggestionForm', {
+      url: "/SuggestionForm",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/SuggestionForm.html"
+          // controller: 'PlaylistsCtrl'
+        }
+      }
+    })          
 
 // Map ========================================================================
     .state('app.map', {
