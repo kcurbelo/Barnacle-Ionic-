@@ -30,6 +30,8 @@ angular.module('starter.controllers', ['ionic', 'ui.router'])
     // Execute action
   });
 
+
+
   // Function to have a path to a page 
   // $scope.go = function ( path ) {
   // $location.path('/SanDiego.html');

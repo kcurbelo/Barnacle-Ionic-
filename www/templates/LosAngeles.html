@@ -2,7 +2,9 @@
   <ion-content>
 
 <!-- =========================Map Area ============================== -->
-
+<!-- Trying to add a button that takes you to the throw us a life saver page. The following code works in the browser but not on the device. -->
+        <!-- <ion-list><ion-item nav-clear menu-close href='#/app/Suggestionform' class='dark'>Suggestion Form</ion-item></ion-list>  -->
+<!--  <a class='button icon icon-right ion-chevron-right' href='#/app/SuggestionForm'>Suggestion FOrm </a> -->
 
 
 	<ion-list>
@@ -27,25 +29,29 @@
 			      	<img src="img/parking.png" style="width:25px;height:25px" ng-show="event.parking == false" ng-style="{'opacity' : event.parking == false ? 0.1 : 1}">
 			      </div>
 				  </div>
-				  <div class="col">
+				  <div class="col col-offset-10">
 			      <div>
 			      	<img src="img/lifeguardtrue.png" style="width:25px;height:25px" ng-show="event.lifeguard == true">
 			      	<img src="img/lifeguard.png" style="width:25px;height:25px" ng-show="event.lifeguard == false" ng-style="{'opacity' : event.lifeguard == false ? 0.1 : 1}">
 			      </div>
 				  </div>
 
-				  <div class="col">
+				  <div class="col col-offset-10">
 			      <div>
 			      	<img src="img/restroomtrue.png" style="width:25px;height:25px" ng-show="event.restroom == true">
 			      	<img src="img/restroom.png" style="width:25px;height:25px" ng-show="event.restroom == false" ng-style="{'opacity' : event.restroom == false ? 0.1 : 1}">
 			      </div>
 				  </div>
 
-				  <div class="col">
+				  <div class="col col-offset-10">
 			      <div>
 			      	<img src="img/surfingtrue.png" style="width:25px;height:25px" ng-show="event.surfing == true">
 			      	<img src="img/surfing.png" style="width:25px;height:25px" ng-show="event.surfing == false" ng-style="{'opacity' : event.surfing == false ? 0.1 : 1}">
 			      </div>
+				  </div>
+
+				  <div class="col">
+			      	<a ng-click="openPopover($event)" class="button button-icon ion-help" ng-style="{'opacity': 0.5 }" ng-hide="true"></a>
 				  </div>
 
 				</div>
@@ -61,28 +67,31 @@
 			      </div>
 				  </div>
 
-				  <div class="col">
+				  <div class="col col-offset-10">
 			      <div>
 			      	<img src="img/animalstrue.png" style="width:25px;height:25px" ng-show="event.dog == true">
 			      	<img src="img/animals.png" style="width:25px;height:25px" ng-show="event.dog == false" ng-style="{'opacity' : event.dog == false ? 0.1 : 1}">
 			      </div>
 				  </div>
 
-				  <div class="col">
+				  <div class="col col-offset-10">
 			      <div>
 			      	<img src="img/fishingtrue.png" style="width:25px;height:25px" ng-show="event.fishing == true">
 			      	<img src="img/fishing.png" style="width:25px;height:25px" ng-show="event.fishing == false" ng-style="{'opacity' : event.fishing == false ? 0.1 : 1}">
 			      </div>
 				  </div>
 
-				  <div class="col">
+				  <div class="col col-offset-10">
           	<div>
 			      	<img src="img/firepittrue.png" style="width:25px;height:25px" ng-show="event.fishing == true">
 			      	<img src="img/firepit.png" style="width:25px;height:25px" ng-show="event.fishing == false" ng-style="{'opacity' : event.fishing == false ? 0.1 : 1}">
-			      	<a ng-click="openPopover($event)" class="button button-icon ion-help" ng-style="{'opacity': 0.5 }"></a>
 			      </div>
 				  </div>
 
+				  <div class="col">
+				  	<a ng-click="openPopover($event)" class="button button-icon ion-help" ng-style="{'opacity': 0.5 }"></a>
+				  </div>
+				  
 				</div>
 				<!-- <hr class="style-six" /> -->
 				<p class="text-color">{{event.description}}</p>
