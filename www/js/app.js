@@ -113,8 +113,8 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       url: "/SuggestionForm",
       views: {
         'menuContent': {
-          templateUrl: "templates/SuggestionForm.html",
-          controller: 'SuggestCtrl'
+          templateUrl: "templates/SuggestionForm.html"
+          // controller: 'SuggestCtrl'
         }
       }
     })          

@@ -344,23 +344,9 @@ angular.module('starter.controllers', ['ionic', 'ui.router'])
 })
 
 .controller('SuggestCtrl', function($scope) {
-  $scope.sendEmail = function () {
-    if(window.plugins && window.plugins.emailComposer) {
-      window.plugins.emailComposer.showEmailComposerWithCallback(function(result){
-        console.log("email success");
-      },
-      "Subjectz here",
-      " ",
-      ["asdsdd@gmail.com", "sdsdas@gmail.com"],
-      null,
-      null,
-      false,
-      null,
-      null
-
-      )
+    $scope.sendFeedback= function() {
+      console.log("Hey you clicked the SuggestCtrl")
     }
-  }
 })
 
 
