@@ -1,4 +1,4 @@
-angular.module('starter.controllers', ['ionic'])
+angular.module('starter.controllers', ['ionic', 'ui.router'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, $ionicPopover) {
 
