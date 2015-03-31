@@ -34,7 +34,6 @@ angular.module('starter.controllers', ['ionic'])
   // $scope.go = function ( path ) {
   // $location.path('/SanDiego.html');
   // };
-
 })
 
 //  Maps controller ============================================================
@@ -340,6 +339,26 @@ angular.module('starter.controllers', ['ionic'])
     };
 
 // End of controller
+})
+
+.controller('SuggestCtrl', function($scope) {
+  $scope.sendEmail = function () {
+    if(window.plugins && window.plugins.emailComposer) {
+      window.plugins.emailComposer.showEmailComposerWithCallback(function(result){
+        console.log("email success");
+      },
+      "Subjectz here",
+      " ",
+      ["asdsdd@gmail.com", "sdsdas@gmail.com"],
+      null,
+      null,
+      false,
+      null,
+      null
+
+      )
+    }
+  }
 })
 
 
