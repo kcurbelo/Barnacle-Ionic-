@@ -2,9 +2,6 @@
   <ion-content>
 <!-- ================ Popup code =============== -->
 
-<p>
-  <button ng-click="openPopover($event)">Open Popover</button>
-</p>
 
 
 <!-- =========================================== -->
@@ -19,8 +16,15 @@
 		 	  <p class="icon ion-ios-telephone-outline"> {{event.phone}}</p>
 	      <p class="icon ion-ios-location-outline"> {{event.address_street}}, {{event.address_city}}, {{event.address_state}} {{event.address_zip}}</p>
 	      <p class="icon ion-ios-clock-outline"> Hours: {{event.hours}}</p>
-	      <p>Parking Price: {{event.parking_price}}</p>
-	      <hr class="style-six"/>
+	      <p class="col">Parking Price: {{event.parking_price}} </p>
+	      <div class="row">
+	      	
+	      </div>
+	      
+
+	      <!-- <hr class="style-six"/> -->
+
+
 
         <!-- =========== Icon area on the card ============================================================ -->
 			  <div class="row">
@@ -28,6 +32,7 @@
 			      <div>
 			      	<img src="img/parkingtrue.png" style="width:25px;height:25px" ng-show="event.parking == true">
 			      	<img src="img/parking.png" style="width:25px;height:25px" ng-show="event.parking == false" ng-style="{'opacity' : event.parking == false ? 0.1 : 1}">
+
 			      </div>
 				  </div>
 				  <div class="col">
@@ -48,6 +53,7 @@
 			      <div>
 			      	<img src="img/surfingtrue.png" style="width:25px;height:25px" ng-show="event.surfing == true">
 			      	<img src="img/surfing.png" style="width:25px;height:25px" ng-show="event.surfing == false" ng-style="{'opacity' : event.surfing == false ? 0.1 : 1}">
+
 			      </div>
 				  </div>
 
@@ -80,14 +86,17 @@
 
 				  <div class="col">
           	<div>
+
 			      	<img src="img/firepittrue.png" style="width:25px;height:25px" ng-show="event.fishing == true">
 			      	<img src="img/firepit.png" style="width:25px;height:25px" ng-show="event.fishing == false" ng-style="{'opacity' : event.fishing == false ? 0.1 : 1}">
+			      	<a ng-click="openPopover($event)" class="button button-icon ion-help" ng-style="{'opacity': 0.5 }"></a>
 			      </div>
+
 				  </div>
 
 				</div>
-				<hr class="style-six" />
-				<!-- =========== Description area on the card ======================================================== -->
+<!-- 				<hr class="style-six" />
+ -->				<!-- =========== Description area on the card ======================================================== -->
 				<p class="text-color">{{event.description}}</p>
       <!-- End of text-wrap area -->
 		  </div>

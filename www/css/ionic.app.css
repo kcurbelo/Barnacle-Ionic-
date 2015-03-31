@@ -7707,3 +7707,6 @@ hr.style-grey {
 
 .text-white {
   color: #012345; }
+
+.marginLR {
+  margin: 0 auto; }
