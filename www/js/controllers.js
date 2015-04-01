@@ -40,7 +40,7 @@ angular.module('starter.controllers', ['ionic', 'ui.router'])
 
 //  Maps controller ============================================================
 
-.controller('MapCtrl', function($scope, $ionicLoading, $compile, $http) {
+.controller('MapCtrl', function($scope, $ionicLoading, $compile, $http,  $ionicPopup) {
 
   var geocoder;
   var map;
@@ -136,6 +136,16 @@ angular.module('starter.controllers', ['ionic', 'ui.router'])
     map.controls[google.maps.ControlPosition.TOP_RIGHT].push(centerControl2Div);
 
 
+
+
+
+
+
+
+
+
+
+
     // Geocoder ==============================================================
     $scope.codeAddress= function() {
       var address = document.getElementById('address').value;
@@ -147,7 +157,17 @@ angular.module('starter.controllers', ['ionic', 'ui.router'])
           //     position: results[0].geometry.location
           // });
         } else {
-          alert('Geocode was not successful for the following reason: ' + status);
+
+       var alertPopup = $ionicPopup.alert({
+         title: 'Oopsie',
+         template: "We couldn't find that location."
+       });
+       alertPopup.then(function(res) {
+         console.log('Thank you for not eating my delicious ice cream cone');
+       });
+
+
+
         }
       });
     }
