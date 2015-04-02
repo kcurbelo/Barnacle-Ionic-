@@ -381,7 +381,7 @@ angular.module('starter.controllers', ['ionic', 'ui.router'])
       $scope.map_link = function(event){
         var address =   event.address_street + ", " + event.address_city;
         var link =      'maps://maps.apple.com/?q=' + uriComponentEncodeFilter(address);
-        return '<a href=' + link + ' class="button">Open Map of Address</a>'
+        return '<a href=' + link + ' class="button button-energized">Take me there</a>'
       };
     //   $scope.map_link = <a class="button" href='maps://maps.apple.com/?q={{ event.address_street + ", " + event.address_city | to_trusted }}' >Open Map of Address</a>
     //   address = event.address_street + ", " + event.address_city
