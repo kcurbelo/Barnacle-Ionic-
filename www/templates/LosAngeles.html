@@ -17,8 +17,6 @@
 		 	  <p class="icon ion-ios-telephone-outline"> {{event.phone}}</p>
 		 	  
 	      <p class="icon ion-ios-location-outline"> {{event.address_street}}, {{event.address_city}}, {{event.address_state}} {{event.address_zip}}</p>
-<!-- 	      <a class="button" href=maps://maps.apple.com/?saddr=los+angeles,ca&daddr=event.longitude,event.latitude>Open Driving Directions</a>
- -->	      <!-- <a class="button" href='maps://maps.apple.com/?q={{ event.address_street + ", " + event.address_city | to_trusted }}' >Open Map of Address</a> -->
  			  <span ng-bind-html="map_link(event) | to_trusted"></span>
 	      <p class="icon ion-ios-clock-outline"> Hours: {{event.hours}}</p>
 	      <p class="ion-social-usd-outline"> Parking Price: {{event.parking_price}}</p>
