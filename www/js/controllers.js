@@ -372,12 +372,21 @@ angular.module('starter.controllers', ['ionic', 'ui.router'])
 
 
 // Playlist controller ==========================================================
-.controller('PlaylistsCtrl', function($scope, $http) {
+.controller('PlaylistsCtrl', function($scope, $http, uriComponentEncodeFilter) {
   $http
   .get("https://barnacle-api.herokuapp.com", { cache: true })
     .then(function(response){
       $scope.events = response.data;
       // console.log($scope.events[0])
+      $scope.map_link = function(event){
+        var address =   event.address_street + ", " + event.address_city;
+        var link =      'maps://maps.apple.com/?q=' + uriComponentEncodeFilter(address);
+        return '<a href=' + link + ' class="button">Open Map of Address</a>'
+      };
+    //   $scope.map_link = <a class="button" href='maps://maps.apple.com/?q={{ event.address_street + ", " + event.address_city | to_trusted }}' >Open Map of Address</a>
+    //   address = event.address_street + ", " + event.address_city
+    //   $scope.map_link = 'maps://maps.apple.com/?q=' + uriComponentEncodeFilter($scope.event.location);
+    //     $scope.location_url = '<a href=' + $scope.location_url + ' class="button button-balanced button-block">Map it!</a>'
     });
 })
 
