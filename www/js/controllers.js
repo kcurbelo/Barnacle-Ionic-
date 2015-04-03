@@ -314,7 +314,7 @@ angular.module('starter.controllers', ['ionic', 'ui.router'])
 
               infowindow.setContent(
               '<h3>'+ events[i].name + '</h3>' + 
-              '<p>' + events[i].address_street + events[i].address_city +  ', ' +  events[i].address_state + ', ' + events[i].address_zip +
+              '<p>' + events[i].address_street + ', '+ events[i].address_city +  ', ' +  events[i].address_state + ' ' + events[i].address_zip +
               '<br />' +
               '<p>' + 'Hours: '+ events[i].hours + '</p>' +
               '<hr />' +
