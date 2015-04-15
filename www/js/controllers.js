@@ -305,8 +305,19 @@ angular.module('starter.controllers', ['ionic', 'ui.router'])
               }
 
 
-              var address =   events[i].address_street + ", " + events[i].address_city;
-              var link    =   'maps://maps.apple.com/?q=' + address
+              // var address =   events[i].address_street + ", " + events[i].address_city;
+              var streetEvent   =    events[i].address_street;
+              var streetSplit   =    streetEvent.split(" ")
+              var streetJoin    =    streetSplit.join("+")
+              console.log(streetJoin)           
+              var cityEvent     =    events[i].address_city; 
+              var citySplit     =    cityEvent.split(" ")
+              var cityJoin      =    citySplit.join("+")
+              console.log(cityJoin) 
+
+              var address = streetJoin + "," + cityJoin
+
+              var link   =    'maps://maps.apple.com/?q=' + address
               console.log(link)
                // '<a href=' + link + 'class="button button-energized">Take me there</a>'
 
