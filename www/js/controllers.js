@@ -29,13 +29,6 @@ angular.module('starter.controllers', ['ionic', 'ui.router'])
   $scope.$on('popover.removed', function() {
     // Execute action
   });
-
-
-
-  // Function to have a path to a page 
-  // $scope.go = function ( path ) {
-  // $location.path('/SanDiego.html');
-  // };
 })
 
 //  Maps controller ============================================================
@@ -222,11 +215,12 @@ angular.module('starter.controllers', ['ionic', 'ui.router'])
     $http
     .get("https://barnacle-api.herokuapp.com", { cache: true })
       .then(function(response){
-
+        // Variables 
         var events = response.data;
         console.log(events[0])
         var marker, i;
         
+        // Places the markets on the page
         for (i = 0; i < events.length; i++) {  
           marker = new google.maps.Marker({
             position: new google.maps.LatLng(events[i].latitude, events[i].longitude),
@@ -236,6 +230,7 @@ angular.module('starter.controllers', ['ionic', 'ui.router'])
           
           google.maps.event.addListener(marker, 'click', (function(marker, i) {
             return function() {
+              // This sets the icon, if it is true then the icon is colored. If it is flase then the icon is greyed out
               // Parking icon ==================================== 
               var parking = events[i].parking
               if (events[i].parking == true) {
@@ -309,18 +304,25 @@ angular.module('starter.controllers', ['ionic', 'ui.router'])
               var firepiticon = "<img src='img/firepit.png' style='width:25px;height:25px;opacity: 0.4;'>"
               }
 
-              
 
+              var address =   events[i].address_street + ", " + events[i].address_city;
+              var link    =   'maps://maps.apple.com/?q=' + address
+              console.log(link)
+               // '<a href=' + link + 'class="button button-energized">Take me there</a>'
 
+              // This sets the content of the info window
               infowindow.setContent(
               '<h3>'+ events[i].name + '</h3>' + 
               '<p>' + events[i].address_street + ', '+ events[i].address_city +  ', ' +  events[i].address_state + ' ' + events[i].address_zip +
               '<br />' +
               '<p>' + 'Hours: '+ events[i].hours + '</p>' +
-              '<hr />' +
+              "<hr style='border: 0; height: 0; border-top: 1px solid rgba(0, 0, 0, 0.1); border-bottom: 1px solid rgba(255, 255, 255, 0.3);'/>" +
               '<p>' + 'Amenities:' + '</p>' +
+              // '<a href=' + link + address + 'class="button button-energized">Take me there</a>' +
               parkingicon + ' ' + lifeguardicon + ' ' + restroomicon + ' ' + surfingicon + ' ' + 
-              volleyballicon + ' ' + animalsicon + ' ' + fishingicon + ' ' + firepiticon 
+              volleyballicon + ' ' + animalsicon + ' ' + fishingicon + ' ' + firepiticon + 
+              "<hr style='border: 0; height: 0; border-top: 1px solid rgba(0, 0, 0, 0.1); border-bottom: 1px solid rgba(255, 255, 255, 0.3);'/>" +
+              "<a style='background-color: #FF8800; color: white; margin: 0; padding: 10px; 12px; min-width: 52px; min-height: 43px; vertical-align: top; text-align: center; text-overflow: ellipsis; font-size: 16px; line-height: 42px; cursor: pointer; height: 43px; text-decoration: none;' href=" + link + '>Take me there</a>' 
                 );
               infowindow.open(map, marker);
             }
@@ -379,6 +381,7 @@ angular.module('starter.controllers', ['ionic', 'ui.router'])
     .then(function(response){
       $scope.events = response.data;
       // console.log($scope.events[0])
+      // Would I have to make this into a javascript function and then put that into where the markers are mad or where the info window gets rendered in the template. 
       $scope.map_link = function(event){
         var address =   event.address_street + ", " + event.address_city;
         var link =      'maps://maps.apple.com/?q=' + uriComponentEncodeFilter(address);
