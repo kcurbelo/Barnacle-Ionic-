@@ -304,10 +304,11 @@ angular.module('starter.controllers', ['ionic', 'ui.router'])
               var firepiticon = "<img src='img/firepit.png' style='width:25px;height:25px;opacity: 0.4;'>"
               }
 
-
-              // var address =   events[i].address_street + ", " + events[i].address_city;
+              // Getting rid of the spaces between address and city or else maps cant use native navigation from infowindows
               var streetEvent   =    events[i].address_street;
+              // Getting rid of spaces 
               var streetSplit   =    streetEvent.split(" ")
+              // Adding plus because this is how maps put in addresses
               var streetJoin    =    streetSplit.join("+")
               console.log(streetJoin)           
               var cityEvent     =    events[i].address_city; 
