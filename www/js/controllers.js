@@ -72,7 +72,7 @@ angular.module('starter.controllers', ['ionic', 'ui.router'])
   };
 
    // Roadmap button ================================================================
-   function CenterControl2(controlDiv2, map) {
+  function CenterControl2(controlDiv2, map) {
     // Set CSS for the control border
     var controlUI2 = document.createElement('div');
     controlUI2.style.backgroundColor = 'rgba(248, 253, 254, 0.5)';
@@ -110,37 +110,27 @@ angular.module('starter.controllers', ['ionic', 'ui.router'])
       zoom: 14,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       disableDefaultUI: true
-      };
+    };
 
     var map = new google.maps.Map(document.getElementById("map"),
         mapOptions);
 
 
     // Creates hybrid button =========================================================
-    var centerControlDiv = document.createElement('div');
-    var centerControl = new CenterControl(centerControlDiv, map);
+    var centerControlDiv   = document.createElement('div');
+    var centerControl      = new CenterControl(centerControlDiv, map);
     centerControlDiv.index = 1;
     map.controls[google.maps.ControlPosition.TOP_RIGHT].push(centerControlDiv);
 
     // Creates roadmap button =========================================================
-    var centerControl2Div = document.createElement('div');
-    var centerControl2 = new CenterControl2(centerControl2Div, map);
+    var centerControl2Div   = document.createElement('div');
+    var centerControl2      = new CenterControl2(centerControl2Div, map);
     centerControl2Div.index = 1;
     map.controls[google.maps.ControlPosition.TOP_RIGHT].push(centerControl2Div);
 
 
-
-
-
-
-
-
-
-
-
-
     // Geocoder ==============================================================
-    $scope.codeAddress= function() {
+    $scope.codeAddress = function() {
       var address = document.getElementById('address').value;
       geocoder.geocode( { 'address': address}, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
@@ -149,27 +139,24 @@ angular.module('starter.controllers', ['ionic', 'ui.router'])
           //     map: map,
           //     position: results[0].geometry.location
           // });
-        } else {
-
-       var alertPopup = $ionicPopup.alert({
-         title: 'Oopsie',
-         template: "We couldn't find that location."
-       });
-       alertPopup.then(function(res) {
-         console.log('Thank you for not eating my delicious ice cream cone');
-       });
-
-
-
+        } 
+        else {
+         var alertPopup = $ionicPopup.alert({
+           title: 'Oopsie',
+           template: "We couldn't find that location."
+         });
+         alertPopup.then(function(res) {
+           console.log('Thank you for not eating my delicious ice cream cone');
+         });
         }
       });
     }
 
     // Marker + infowindow + angularjs compiled ng-click ==============================================
     var contentString = "<div><a ng-click='clickTest()'>Click me!</a></div>";
-    var compiled = $compile(contentString)($scope);
+    var compiled      = $compile(contentString)($scope);
 
-    var infowindow = new google.maps.InfoWindow({
+    var infowindow    = new google.maps.InfoWindow({
       content: compiled[0]
     });
     // Places a map marker when the page loads
@@ -200,16 +187,12 @@ angular.module('starter.controllers', ['ionic', 'ui.router'])
       '(last visited June 22, 2009).</p>'+
       '</div>'+
       '</div>';
-;
+      ;
 
-
-
-
-  var infowindow = new google.maps.InfoWindow({
-      content: contentString
-  });
-
-
+    // Creating infowindow variable
+    var infowindow = new google.maps.InfoWindow({
+        content: contentString
+    });
 
     // Get the data for lat, lng ==============================================================
     $http
@@ -220,7 +203,7 @@ angular.module('starter.controllers', ['ionic', 'ui.router'])
         console.log(events[0])
         var marker, i;
         
-        // Places the markets on the page
+        // Places the beaches on the page
         for (i = 0; i < events.length; i++) {  
           marker = new google.maps.Marker({
             position: new google.maps.LatLng(events[i].latitude, events[i].longitude),
@@ -296,12 +279,12 @@ angular.module('starter.controllers', ['ionic', 'ui.router'])
               var fishingicon = "<img src='img/fishing.png' style='width:25px;height:25px;opacity: 0.4;'>"
               }
               // Firepit icon ====================================
-              var firepit = events[i].firepit
+              var firepit       = events[i].firepit
               if (events[i].firepit == true) {
                 var firepiticon = "<img src='img/firepittrue.png' style='width:25px;height:25px'>"
               }
               else {
-              var firepiticon = "<img src='img/firepit.png' style='width:25px;height:25px;opacity: 0.4;'>"
+              var firepiticon   = "<img src='img/firepit.png' style='width:25px;height:25px;opacity: 0.4;'>"
               }
 
               // Getting rid of the spaces between address and city or else maps cant use native navigation from infowindows
@@ -318,7 +301,7 @@ angular.module('starter.controllers', ['ionic', 'ui.router'])
 
               var address = streetJoin + "," + cityJoin
 
-              var link   =    'maps://maps.apple.com/?q=' + address
+              var link    =    'maps://maps.apple.com/?q=' + address
               console.log(link)
                // '<a href=' + link + 'class="button button-energized">Take me there</a>'
 
@@ -350,6 +333,7 @@ angular.module('starter.controllers', ['ionic', 'ui.router'])
     };
 
     // Centering in on the user location ========================================================
+    // Found from http://codepen.io/ionic/pen/uzngt
     $scope.centerOnMe = function() {
       if(!$scope.map) {
           return;
